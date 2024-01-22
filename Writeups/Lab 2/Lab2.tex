@@ -1,0 +1,342 @@
+% ****** Start of file aipsamp.tex ******
+%
+%   This file is part of the AIP files in the AIP distribution for REVTeX 4.
+%   Version 4.1 of REVTeX, October 2009
+%
+%   Copyright (c) 2009 American Institute of Physics.
+%
+%   See the AIP README file for restrictions and more information.
+%
+% TeX'ing this file requires that you have AMS-LaTeX 2.0 installed
+% as well as the rest of the prerequisites for REVTeX 4.1
+%
+% It also requires running BibTeX. The commands are as follows:
+%
+%  1)  latex  aipsamp
+%  2)  bibtex aipsamp
+%  3)  latex  aipsamp
+%  4)  latex  aipsamp
+%
+% Use this file as a source of example code for your aip document.
+% Use the file aiptemplate.tex as a template for your document.
+\documentclass[%
+ aip,
+ jmp,
+ amsmath,
+ amssymb,
+%preprint,%
+ reprint,%
+%author-year,%
+%author-numerical,%
+ numerical,
+ longbibliography,
+]{revtex4-1}
+
+\usepackage{graphicx}% Include figure files
+\graphicspath{{images/}}
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{url}
+\usepackage{float}
+\usepackage{silence}
+\usepackage{tabularx}
+\usepackage{verbatimbox}
+\WarningFilter{revtex4-1}{Repair the float}
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
+%\linenumbers\relax % Commence numbering lines
+
+\begin{document}
+
+%\preprint{AIP/123-QED}
+
+\title[Laboratory 2]{Introduction to AC Measurements} % Force line breaks with \\
+
+\author{Kevin "Yama" Keyser}
+ \email{kk8r8@mail.umck.edu}
+\affiliation{ 
+	University of Missouri-Kansas City
+	%\\This line break forced with \textbackslash\textbackslash
+}%
+
+%\date{\today}% It is always \today, today,
+             %  but any date may be explicitly specified
+
+\begin{abstract}
+In Laboratory 2, we expand our understanding of electronic circuits from Laboratory 1.
+Instead of DC measurements, we are now working with AC measurements. From there, we 
+will cover concepts of frequency, frequency dependence, and the concepts behind filters, 
+specifically high pass and low pass filters. We will also get an introduction to Bode
+plots.
+\end{abstract}
+
+%\keywords{Operational Amplifier}%Use showkeys class option if keyword
+                              %display desired
+\maketitle
+
+%\begin{quotation}
+%The ``lead paragraph'' is encapsulated with the \LaTeX\ 
+%\verb+quotation+ environment and is formatted as a single paragraph before the first section heading. 
+%(The \verb+quotation+ environment reverts to its usual meaning after the first sectioning command.) 
+%Note that numbered references are allowed in the lead paragraph.
+%
+%The lead paragraph will only be found in an article being prepared for the journal \textit{Chaos}.
+%\end{quotation}
+
+\section{Background}
+
+There isn't much background needed for this lab. One of the main factors is making sure
+that we have a solid understanding of how BNC connectors should be used, and the
+ins-and-outs of how to work an oscilloscope. 
+
+\section{Procedure}
+
+The procedures for Laboratory 2 is very straight forward, so the Laboratory 2 sheet will be attached at the end of this write up.
+
+\section{Presentation of Data}
+
+	\subsection{2-2: AC Voltage Measurements}
+	
+		\begin{tabularx}{0.45\textwidth}[t]{| X | X | X | X |}
+		\hline
+		\multicolumn{4}{|c|}{Sine Wave (DC Values)}\\
+		\multicolumn{4}{|c|}{5Vpp, 0 Offset}\\		
+		\hline
+			\multicolumn{1}{|c|}{Freq (Hz)} & 
+			\multicolumn{1}{c|}{DC Min} & 
+			\multicolumn{1}{c|}{DC Max} &
+			\multicolumn{1}{c|}{DC Avg} \\ 
+		\hline
+		10 & -0.68 & 0.697 & 0\\ \hline
+		20 & -0.109 & 0.121 & 0.007\\ \hline
+		50 & 0.006 & 0.006 & 0.006\\ \hline
+		1k & 0.006 & 0.006 & 0.006\\ \hline
+		2k & 0.007 & 0.006 & 0.007\\ \hline
+		5k & 0.007 & 0.007 & 0.007\\ \hline
+		10k & 0.007 & 0.007 & 0.007\\ \hline
+		20k & 0.007 & 0.007 & 0.007\\ \hline
+		50k & 0.007 & 0.007 & 0.007\\ \hline
+		\end{tabularx}
+	
+		\begin{tabularx}{0.45\textwidth}[t]{| X | X | X | X |}
+		\hline
+		\multicolumn{4}{|c|}{Sine Wave (AC Values)}\\
+		\multicolumn{4}{|c|}{5Vpp, 0 Offset}\\
+		\hline
+			\multicolumn{1}{|c|}{Freq (Hz)} & 
+			\multicolumn{1}{c|}{DC Min} & 
+			\multicolumn{1}{c|}{DC Max} &
+			\multicolumn{1}{c|}{DC Avg} \\ 
+		\hline
+		10  & 1.702 & 1.736 & 1.719\\ \hline
+		20  & 1.752 & 1.752 & 1.752\\ \hline
+		50  & 1.763 & 1.763 & 1.763\\ \hline
+		1k  & 1.763 & 1.763 & 1.766\\ \hline
+		2k  & 1.756 & 1.756 & 1.756\\ \hline
+		5k  & 1.555 & 1.555 & 1.555\\ \hline
+		10k & 1.104 & 1.113 & 1.108\\ \hline
+		20k & 0.657 & 0.682 & 0.672\\ \hline
+		50k & 0.353 & 0.420 & 0.392\\ \hline
+		\end{tabularx}
+	
+		\begin{tabularx}{0.45\textwidth}[t]{| X | X | X | X |}
+		\hline
+		\multicolumn{4}{|c|}{Square Wave (DC Values)}\\
+		\multicolumn{4}{|c|}{5Vpp, 0 Offset}\\		
+		\hline
+			\multicolumn{1}{|c|}{Freq (Hz)} & 
+			\multicolumn{1}{c|}{DC Min} & 
+			\multicolumn{1}{c|}{DC Max} &
+			\multicolumn{1}{c|}{DC Avg} \\ 
+		\hline
+		10 & -0.869 & 0.898 & -0.031\\ \hline
+		20 & -0.131 & 0.161 & 0.015 \\ \hline
+		50 & 0.015 & 0.015 & 0.015 \\ \hline
+		1k & 0.015 & 0.015 & 0.015 \\ \hline
+		2k & 0.015 & 0.015 & 0.015 \\ \hline
+		5k & 0.015 & 0.015 & 0.015 \\ \hline
+		10k & 0.015 & 0.015 & 0.015 \\ \hline
+		20k & 0.015 & 0.015 & 0.015 \\ \hline
+		50k & 0.015 & 0.015 & 0.015 \\ \hline
+		\end{tabularx}
+	
+		\begin{tabularx}{0.45\textwidth}[t]{| X | X | X | X |}
+		\hline
+		\multicolumn{4}{|c|}{Square Wave (AC Values)}\\
+		\multicolumn{4}{|c|}{5Vpp, 0 Offset}\\
+		\hline
+			\multicolumn{1}{|c|}{Freq (Hz)} & 
+			\multicolumn{1}{c|}{DC Min} & 
+			\multicolumn{1}{c|}{DC Max} &
+			\multicolumn{1}{c|}{DC Avg} \\ 
+		\hline
+		10  & 2.455 & 2.469 & 2.463\\ \hline
+		20  & 2.480 & 2.480 & 2.480\\ \hline
+		50  & 2.482 & 2.482 & 2.482\\ \hline
+		1k  & 2.411 & 2.418 & 2.415\\ \hline
+		2k  & 2.334 & 2.348 & 2.341\\ \hline
+		5k  & 2.005 & 2.027 & 2.016\\ \hline
+		10k & 1.418 & 1.456 & 1.436\\ \hline
+		20k & 0.869 & 0.913 & 0.889\\ \hline
+		50k & 0.515 & 0.592 & 0.566\\ \hline
+		\end{tabularx}
+	
+		\begin{tabularx}{0.45\textwidth}[t]{| X | X | X | X |}
+		\hline
+		\multicolumn{4}{|c|}{Triangle Wave (DC Values)}\\
+		\multicolumn{4}{|c|}{5Vpp, 0 Offset}\\		
+		\hline
+			\multicolumn{1}{|c|}{Freq (Hz)} & 
+			\multicolumn{1}{c|}{DC Min} & 
+			\multicolumn{1}{c|}{DC Max} &
+			\multicolumn{1}{c|}{DC Avg} \\ 
+		\hline
+		10 & -0.555 & 0.567 & 0.041 \\ \hline
+		20 & -0.087 & 0.100 & 0.004 \\ \hline
+		50 & 0.007 & 0.007 & 0.007 \\ \hline
+		1k & 0.007 & 0.007 & 0.007 \\ \hline
+		2k & 0.007 & 0.007 & 0.007 \\ \hline
+		5k & 0.007 & 0.007 & 0.007 \\ \hline
+		10k & 0.007 & 0.007 & 0.007 \\ \hline
+		20k & 0.007 & 0.007 & 0.007 \\ \hline
+		50k & 0.007 & 0.007 & 0.007 \\ \hline
+		\end{tabularx}
+	
+	\begin{tabularx}{0.45\textwidth}[t]{| X | X | X | X |}
+	\hline
+	\multicolumn{4}{|c|}{Triangle Wave (AC Values)}\\
+	\multicolumn{4}{|c|}{5Vpp, 0 Offset}\\
+	\hline
+		\multicolumn{1}{|c|}{Freq (Hz)} & 
+		\multicolumn{1}{c|}{DC Min} & 
+		\multicolumn{1}{c|}{DC Max} &
+		\multicolumn{1}{c|}{DC Avg} \\ 
+	\hline
+	10  & 1.380 & 1.413 & 1.396\\ \hline		
+	20  & 1.430 & 1.430 & 1.430\\ \hline
+	50  & 1.442 & 1.442 & 1.442\\ \hline
+	1k  & 1.444 & 1.444 & 1.444\\ \hline
+	2k  & 1.433 & 1.433 & 1.433\\ \hline
+	5k  & 1.264 & 1.267 & 1.265\\ \hline
+	10k & 0.894 & 0.902 & 0.900\\ \hline
+	20k & 0.532 & 0.556 & 0.545\\ \hline
+	50k & 0.282 & 0.342 & 0.312\\ \hline
+	\end{tabularx}
+	
+	\subsection{2-3: Time/Frequency Measurements}
+	
+	No tabular data.
+	
+	\subsection{2-4: Low-Pass and High-Pass Filters}
+	
+	\begin{tabularx}{0.45\textwidth}[t]{| X | X | X |}
+	\hline
+	\multicolumn{3}{|c|}{Low-Pass Filter}\\
+	\hline
+		\multicolumn{1}{|c|}{Freq (Hz)} & 
+		\multicolumn{1}{c|}{$V_{in}$} & 
+		\multicolumn{1}{c|}{$V_{out}$} \\ 
+	\hline
+	10   & 8.160 & 8.680 \\ \hline
+	20   & 9.520 & 8.600 \\ \hline
+	50   & 10.08 & 8.560 \\ \hline
+	100  & 10.08 & 7.440 \\ \hline
+	200  & 10.08 & 5.320 \\ \hline
+	500  & 10.08 & 2.640 \\ \hline
+	1k   & 10.08 & 1.360 \\ \hline
+	2k   & 10.08 & 0 \\ \hline
+	5k   & 10.08 & 0 \\ \hline
+	10k  & 10.08 & 0 \\ \hline
+	20k  & 10.08 & 0 \\ \hline
+	50k  & 10.08 & 0 \\ \hline
+	100k & 10.08 & 0 \\ \hline	
+	\end{tabularx}
+	
+	\begin{tabularx}{0.45\textwidth}[t]{| X | X | X |}
+	\hline
+	\multicolumn{3}{|c|}{High-Pass Filter}\\
+	\hline
+		\multicolumn{1}{|c|}{Freq (Hz)} & 
+		\multicolumn{1}{c|}{$V_{in}$} & 
+		\multicolumn{1}{c|}{$V_{out}$} \\ 
+	\hline
+	10   & 8.160 & 0 \\ \hline
+	20   & 9.520 & 1.280 \\ \hline
+	50   & 10.08 & 3.200 \\ \hline
+	100  & 10.08 & 5.520 \\ \hline
+	200  & 10.08 & 7.840 \\ \hline
+	500  & 10.08 & 9.400 \\ \hline
+	1k   & 10.08 & 9.840 \\ \hline
+	2k   & 10.08 & 10.00 \\ \hline
+	5k   & 10.08 & 10.00 \\ \hline
+	10k  & 10.08 & 10.00 \\ \hline
+	20k  & 10.08 & 10.00 \\ \hline
+	50k  & 10.08 & 10.00 \\ \hline
+	100k & 10.08 & 10.00 \\ \hline	
+	\end{tabularx}
+	
+\section{Discussion} \label{Section:Discussion}
+	
+	\subsection{2-2: AC Voltage Measurements}
+	
+	The AC and DC voltage measurements with the DMM accomplished a couple of things.
+	For an AC input, the DMM will read the average value for DC. It has to sample
+	in order to get these readings, and it averages over the samples. When you have
+	a voltage that is a function of frequency, your "`average"' value will always be
+	what your offset is. This is why the DC readings on our tables, regardless of the
+	wave, came out to nearly zero.
+	
+	For the AC readings, we found out the limitations of the DMM versus the multimeter.
+	This makes sense when you consider what a DMM is likely to be used for, which is mostly
+	consumer electronics. This means you'll have the highest efficiencies at 50-60Hz. Anything
+	below, and you'll get weird readings. Anything higher and you'll get eventually get readings
+	of zero. How quickly you go to zero, and what your readings are for the AC mode on the DMM
+	will depend on your wave.
+	
+	This goes to show that for basic uses, like consumer electronics, a DMM will most likely
+	suit all your needs. For anything more complex, it may require an oscilloscope.
+	
+	\subsection{2-3: Time/Frequency Measurements}
+	
+	Though the DMM did a great job of giving roughly the same measurements as the oscilloscope
+	for the frequency/time measurements, what it lacks is granularity. Once again, looking back
+	to our last experiment, this is due to the uses of the DMM versus the uses of an 
+	oscilloscope. Where the oscilloscope gave us a reading of 20.04ms, the DMM gave us a reading
+	of 0.02 seconds. Though they're roughly the same value, the oscilloscope gives us access
+	to more granular data, which can come in handy for sensitive experiments.
+	
+	\subsection{2-4: Low-Pass and High-Pass Filters}
+	
+	The High-Pass and Low-Pass filter experiments show us how we can block certain frequencies
+	depending on the output voltage. After looking it up online, we can find that the industry
+	standard for the cutoff point for these filters is in the form of 
+	$20*log(\frac{V_{out}}{V_{in}}) \geq -3dB$. Anything below -3dB is filtered out.
+	
+	For the Low-Pass filter, the formula for $V_{out}$ is 
+	\[ V_{out} = V_{in}*\frac{X_c}{\sqrt{R^2+X_c^2}} \]
+	Where R is resistance of the circuit, and $X_c$ is the capacitive reactance, given by
+	$X_c = -\frac{1}{\omega C} = -\frac{1}{2\pi fC}$
+	
+	For the High-Pass filter, the formula for $V_{out}$ is
+	\[ V_{out} = V_{in}*\frac{R}{\sqrt{R^2+X_c^2}} \]
+	
+	You can see that for the Low-Pass filter, as the frequency goes to infinity, $X_c$ goes
+	to zero, making $V_{out}$ go to zero, and the opposite is true for the High-Pass filter.
+	
+	For filtering out specific frequencies, or having specific cut offs, you choose your
+	frequency first, and set choose your resistor and capacitor that will get you that -3dB
+	cutoff point.
+
+\section{Conclusion}
+
+Though it took a little digging ti figure out why the DMM would be less sensitive (other than
+the obvious answer that it's cheaper), we learned that oscilloscopes are meant for use in all
+situations, where most DMMs are built for consumer electronics. This means they are usually
+less sensitive, which is why we normally opt for the oscilloscope for our experiments. 
+
+Beyond that, we learned the formulas for $V_{out}$ for both High-Pass and Low-Pass filters,
+and how to mathematically formulate our own filters for our own needs. We can also expand this
+knowledge, and take the output of our High-Pass or Low-Pass filter, and feed it into the other
+filter so we can filter down to a small window, or band, so we only allow a limited number of
+frequencies in.
+
+\end{document}
